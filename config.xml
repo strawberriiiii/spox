@@ -39,16 +39,6 @@
   <gap:plugin name="org.apache.cordova.vibration"/>
   <plugin name="com.ionic.keyboard" source="pgb" />
   <plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" spec="1.2.0" source="pgb" />
-  <gap:config-file platform="android" parent="/manifest">
-        <supports-screens 
-            android:xlargeScreens="true" 
-            android:largeScreens="true" 
-            android:smallScreens="true" />
-        <application android:theme="@android:style/Theme.NoTitleBar" >
-            <activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-            </activity>
-        </application>
-    </gap:config-file>
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
