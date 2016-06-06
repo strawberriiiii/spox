@@ -459,12 +459,14 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
             $scope.message = "";
             $scope.count = 0;
             $interval.cancel($scope.timer);
+            $scope.timer = null;
         }
 
         if (Tracking.isRepetition(sport)) { 
             Tracking.currentTracking.repetitions = $scope.repCount;
             $scope.repCount = 0;
             $interval.cancel($scope.repTimer);
+            $scope.repTimer = null;
         }
 
         if (Tracking.isKm(sport)) {

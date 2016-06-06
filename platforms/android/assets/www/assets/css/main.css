@@ -162,7 +162,7 @@ h1 {
   height: 110px;
   width: 170px;
   margin-top: 0px;
-  margin-left: 130px;
+  margin-left: 0px;
 
   position: relative;
   z-index: 1;
@@ -176,7 +176,7 @@ h1 {
   position: absolute;
   z-index: 2;
 
-  margin-left: 145px;
+  margin-left: 15px;
   margin-top: 35px;
 }
 
@@ -184,9 +184,8 @@ h1 {
   position: absolute;
   z-index: 2;
 
-  margin-left: 145px;
+  margin-left: 15px;
   margin-top: 23px;
-  margin-right: 5px;
 }
 
 #msgTextTwoLiner:hover {
@@ -197,12 +196,12 @@ h1 {
   position: absolute;
   z-index: 2;
 
-  margin-left: 145px;
+  margin-left: 15px;
   margin-top: 42px;
 }
 
 .feedback {
   position: fixed;
-  left: 13%;
+  right: 5%;
   top: 18%;
 }

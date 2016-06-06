@@ -55,7 +55,7 @@
 }
 
 #tradeText {
-	font-size: 12px;
+	font-size: 14px;
 	padding: 5px;
 }
 
@@ -68,13 +68,17 @@
 }
 
 .button.tradeItemButton {
-	height: 20px;
-	margin-top: 10px;
+	min-height: 15px;
+	height: 40px;
+	margin-top: 15px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 10px;
 	background-color: #2f5554;
 	font-size: 13px;
 	color: #f2be43;
+	vertical-align: middle;
 }
 
 .opacityBackground {

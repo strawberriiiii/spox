@@ -17,8 +17,12 @@
 
         <!-- Door -->
         <a class="btn" href="#/gym/" ng-click="closeFeedback()">
-          <img ng-src="assets/img/door.png" class="door" />
+          <div class="door link">
+          
+        </div>
         </a>
+        
+        <img ng-src="assets/img/door.png" class="door" />
          
         <!-- Table & Phone -->
         <img ng-src="assets/img/table.png" class="sideTable" />
@@ -30,7 +34,7 @@
         <!-- Pet -->
         <div class="feedback">
           <!--<img ng-src="{{game.petType.pic}}" class="pet home feedback"/>-->
-          <div class="spriteSheet"></div>
+          <div class="spriteSheet" style="background-image: url({{game.petSpritesheetLink}})"></div>
           <p id="msgTextTwoLiner" ng-hide="currentTracking.time == 0 && currentTracking.km == 0 && currentTracking.repetitions == 0" ng-click="closeFeedback()">{{receiveNotificationMsg()}}</p>
           <img ng-src="assets/img/message.png" class="msg score" ng-hide="currentTracking.time == 0 && currentTracking.km == 0 && currentTracking.repetitions == 0" ng-click="closeFeedback()"/>
         </div>
@@ -83,11 +87,11 @@
 
           <!-- Pet -->
           <div class="form-group" style="text-align: center">
-            <button type="button" class="btn petChoice" ng-click="previousAnimal(currentPet)">
+            <button type="button" class="btn petChoice" ng-click="previousAnimal(currentPet)" style="left: 15%;">
               <span class="glyphicon glyphicon-chevron-left"></span>
             </button>
             <img ng-src="{{currentPet.pic}}" class="pet" />
-            <button type="button" class="btn petChoice" style="margin-left: 20px" ng-click="nextAnimal(currentPet)">
+            <button type="button" class="btn petChoice" style="margin-left: 20px; right: 15%;" ng-click="nextAnimal(currentPet)">
               <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
           </div>

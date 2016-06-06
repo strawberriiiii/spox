@@ -8,6 +8,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 			petName: "",
 			petGender: "n",
 			petType: null,
+			petSpritesheetLink: "",
 			level: 1,
 			gameOver: true
 		},
@@ -44,6 +45,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 		o.game.petName = petName;
 		o.game.petGender = petGender;
 		o.game.petType = petType;
+		setSpritesheetLink(petType);
 		resetHealth();
 		resetLevel();
 		o.game.gameOver = false;
@@ -73,6 +75,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 				o.game.petGender = "n";
 				o.game.level = 1;
 				o.game.petType = null;
+				o.game.petSpritesheetLink = "";
 			}, 10);
 		} 
 		console.log("Health: " + o.game.health);
@@ -156,7 +159,6 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 
 	// Starts the timer
 	function startInt() {
-        console.log("start timer");
         /*var gameInv = $interval(function() {
             o.reduceScores();
             }, 10000);*/
@@ -171,5 +173,17 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 	            console.log("game over");
 	        }
     	}, 5000);
-    }
+    };
+
+    function setSpritesheetLink(petType) {
+    	if (petType.name.toLowerCase() == 'bird') {
+    		o.game.petSpritesheetLink = 'assets/img/pet/bird_spritesheet.png';
+    	} else if (petType.name.toLowerCase() == 'penguin') {
+    		o.game.petSpritesheetLink = 'assets/img/pet/penguin_spritesheet.png';
+    	} else if (petType.name.toLowerCase() == 'tiger') {
+    		o.game.petSpritesheetLink = 'assets/img/pet/tiger_spritesheet.png';
+    	} else if (petType.name.toLowerCase() == 'turtle') {
+    		o.game.petSpritesheetLink = 'assets/img/pet/turtle_spritesheet.png';
+    	}
+    };
 });

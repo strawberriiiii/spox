@@ -39,6 +39,8 @@
         <div class="tradeDialog" ng-show="tradeDialog">
 
           <table style="width: 100%">
+
+            <!-- Close Button & Title -->
             <tr>
               <td style="text-align: left">
                 <button class="btn closeButton" ng-click="closeTrade()">X</button>
@@ -47,16 +49,18 @@
                 <h3 class="titleTradeDialog">{{trade}}</h3>
               </td>
             </tr>
+
+             <!-- Traded item to give -->
             <tr>
               <td id="tradeText" style="text-align: left">
                 Give:
               </td>
               <td id="tradeText">
-                <button class="btn amountButton" ng-click="addItem(tradeItem)" ng-disabled="tradeItemAmount >= tradeItem.amount-1">
+                <button class="btn amountButton" ng-click="subItem(tradeItem)" ng-disabled="tradeItemAmount <= 0">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </button>
                 {{tradeItemAmount}}
-                <button class="btn amountButton" ng-click="subItem(tradeItem)" ng-disabled="tradeItemAmount <= 0">
+                <button class="btn amountButton" ng-click="addItem(tradeItem)" ng-disabled="tradeItemAmount >= tradeItem.amount-1">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
               </td>
@@ -64,6 +68,8 @@
                 <img id="tradePic" ng-src="{{tradeItem.pic}}" />
               </td>
             </tr>
+
+             <!--  Traded item to receive-->
             <tr>
               <td id="tradeText" style="text-align: left">
                 Receive:
@@ -81,6 +87,8 @@
                 </button>
               </td>
             </tr>
+
+             <!-- Trade Button -->
             <tr>
               <td colspan="3">
                 <button class="button tradeItemButton" ng-click="tradeItems(tradeItem, otherItem)">{{tradeDialogButton}}</button>

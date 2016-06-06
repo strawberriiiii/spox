@@ -16,11 +16,12 @@
     <ion-content>
       <div class="friends list-background">
 
+      <!-- Friends -->
         <div class="friendsContainer">
           <h4 id="allUsers">{{myFriendsLabel}}</h4>
           <div class="list card" ng-repeat="friend in connectedFriends" ng-show="connectedWithFacebook">
             <div class="item itemFriends">
-              <table class="listTable">
+              <table class="listTable" style="width: 100%">
                 <tr>
                   <td id="picColFriends">
                     <img ng-src="{{pets[friend.petType].pic}}" id="listPic" />
@@ -45,6 +46,7 @@
             </div>
           </div>
 
+          <!-- Invite friends & facebook button -->
           <div style="text-align: center">
             <a class="button inviteButton" ng-href="mailto:">{{inviteFriends}}</a>
 
@@ -58,6 +60,7 @@
 
         </div>
 
+        <!-- All Users -->
         <div class="friendsContainer">
           <h4 id="allUsers">{{allUsersLabel}}</h4>
           <div class="list card" ng-repeat="user in allUsers">
