@@ -1,0 +1,107 @@
+<!-- www/templates/game.html -->
+<ion-view view-title="Backpack" class="backpack-page">
+  <ion-content scroll="false">
+  
+    <!-- Header -->
+  	<div class="bar bar-header bar-energized">
+      <a class="button" href="{{backPathBackpack}}">
+       	<img ng-src="assets/img/back_button.png" id="backButton" />
+      </a>
+      <h1>{{backpackLabel}}</h1>
+      <img ng-src="assets/img/level_button.png" id="levelButton" />
+      <p id="level">{{game.level}}</p>
+    </div>
+
+    <!-- Content -->
+    <ion-content>
+      <div class="backpack list-background">
+
+        <div class="list card" ng-repeat="item in backpack">
+          <div class="item">
+            <table class="listTable">
+              <tr>
+                <td id="amountCol">{{item.amount}}</td>
+                <td id="picCol">
+                  <img ng-src="{{item.pic}}" id="listPic" />
+                </td>     
+                <td id="nameCol">{{item.name}}</td>
+                <td id="buttonCol">
+                  <button class="button tradeButton" ng-click="openTrade(item)" ng-disabled="tradeButtonIsDisabled(item.name)">
+                    {{trade}}
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Trade Dialog -->
+        <div class="tradeDialog" ng-show="tradeDialog">
+
+          <table style="width: 100%">
+            <tr>
+              <td style="text-align: left">
+                <button class="btn closeButton" ng-click="closeTrade()">X</button>
+              </td>
+              <td>
+                <h3 class="titleTradeDialog">{{trade}}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td id="tradeText" style="text-align: left">
+                Give:
+              </td>
+              <td id="tradeText">
+                <button class="btn amountButton" ng-click="addItem(tradeItem)" ng-disabled="tradeItemAmount >= tradeItem.amount-1">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                {{tradeItemAmount}}
+                <button class="btn amountButton" ng-click="subItem(tradeItem)" ng-disabled="tradeItemAmount <= 0">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+              </td>
+              <td>
+                <img id="tradePic" ng-src="{{tradeItem.pic}}" />
+              </td>
+            </tr>
+            <tr>
+              <td id="tradeText" style="text-align: left">
+                Receive:
+              </td>
+              <td id="tradeText">
+                {{otherItemAmount}}
+              </td>
+              <td>
+                <button class="btn amountButton" ng-click="changeItemBackwards(otherItem)">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <img id="tradePic" ng-src="{{otherItem.pic}}" />
+                <button class="btn amountButton" ng-click="changeItemForwards(otherItem)">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button class="button tradeItemButton" ng-click="tradeItems(tradeItem, otherItem)">{{tradeDialogButton}}</button>
+              </td>
+            </tr>
+          </table>
+          
+        </div>
+
+    	</div>
+
+      <div class="opacityBackground" ng-show="tradeDialog">
+      </div>
+    </ion-content>
+
+    <!-- Footer -->
+    <ion-footer-bar align-title="center">
+      <a class="col button button-calm startActivity" href="#/tracking">
+        <p class="startActivityText">{{startActivity}}</p>
+      </a>
+    </ion-footer-bar>
+
+  </ion-content>
+</ion-view>

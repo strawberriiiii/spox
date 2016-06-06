@@ -1,0 +1,207 @@
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 200;
+  text-transform: none;
+}
+
+h1 {
+  color: #a60b28;
+  text-align: center;
+  text-transform: none;
+  white-space: nowrap;
+  font-weight: 200;
+  
+  margin-top: 25px;
+  margin-left: 50px;
+}
+
+.bar-header {
+  background-color: #f2be43;
+  height: 80px;
+}
+
+.bar-header h1 {
+  color: #a60b28;
+  font-size: 25px;
+  text-align: center;
+}
+
+.bar-long {
+  height: 160px;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+.bar-footer {
+  height: 60px;
+}
+
+.list-background {
+  background-color: #3c3c3c;
+
+  padding-top: 80px;
+  padding-bottom: 4px;
+}
+
+.button-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 18px;
+  line-height: 1.428571429;
+  border-radius: 50%;
+}
+.button-circle.button-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 50%;
+}
+.button-circle.button-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 50%;
+}
+
+.button-create {
+  background-color: #2f5554;
+  color: #f2be43;
+}
+.button-create:hover {
+  color: #f2be43;
+}
+
+.startActivity {
+  color: #f2be43;
+}
+
+.startActivityText {
+  margin-top: 10px;
+}
+
+#backButton {
+  height: 55px;
+  margin-top: 10px;
+}
+
+#backButtonPic {
+  height: 55px;
+  width: 55px;
+}
+
+#levelButton {
+  height: 55px;
+  width: 55px;
+
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+#levelButtonNametag {
+  height: 55px;
+  width: 155px;
+
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+#level {
+  font-size: 20px;
+  color: #f2be43;
+
+  position: fixed;
+  top: 29px;
+  right: 37px;
+}
+
+#name {
+  font-size: 15px;
+  color: #f2be43;
+
+  position: fixed;
+  top: 33px;
+  right: 75px;
+}
+
+#listPic {
+  height: 40px;
+  margin-left: 20px;
+}
+
+.listTable {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.item {
+  padding-top: 12px;
+  padding-bottom: 9px;
+  padding-right: 9px;
+  min-height: 50px
+}
+
+#buttonCol {
+  vertical-align: middle;
+  text-align: right;
+}
+
+.msg {
+  height: 110px;
+  width: 170px;
+  margin-top: 0px;
+  margin-left: 0px;
+
+  position: relative;
+  z-index: 1;
+}
+
+.msg.score {
+  cursor: pointer;
+}
+
+#msgTextOneLiner {
+  position: absolute;
+  z-index: 2;
+
+  margin-left: 15px;
+  margin-top: 35px;
+}
+
+#msgTextTwoLiner {
+  position: absolute;
+  z-index: 2;
+
+  margin-left: 15px;
+  margin-top: 23px;
+}
+
+#msgTextTwoLiner:hover {
+  cursor: pointer;
+}
+
+#scoreText {
+  position: absolute;
+  z-index: 2;
+
+  margin-left: 15px;
+  margin-top: 42px;
+}
+
+.feedback {
+  position: fixed;
+  right: 5%;
+  top: 18%;
+}

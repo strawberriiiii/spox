@@ -1,0 +1,111 @@
+<!-- www/templates/game.html -->
+<ion-view view-title="Game">
+  <ion-content scroll="false">
+
+    <!-- Game View -->
+    <div ng-hide="game.gameOver" class="game">
+
+      <!-- Header Bar -->
+      <div class="row">
+        <img ng-src="assets/img/level_button_nametag.png" id="levelButtonNametag" />
+        <p id="name">{{game.petName}}</p>
+        <p id="level">{{game.level}}</p>
+      </div>
+
+      <!-- Game field-->
+      <div class="row gameField">
+
+        <!-- Door -->
+        <a class="btn" href="#/gym/" ng-click="closeFeedback()">
+          <div class="door link">
+          
+        </div>
+        </a>
+        
+        <img ng-src="assets/img/door.png" class="door" />
+         
+        <!-- Table & Phone -->
+        <img ng-src="assets/img/table.png" class="sideTable" />
+
+        <a class="btn" href="#/friends">
+          <img ng-src="assets/img/phone.png" class="phone" />
+        </a>
+        
+        <!-- Pet -->
+        <div class="feedback">
+          <!--<img ng-src="{{game.petType.pic}}" class="pet home feedback"/>-->
+          <div class="spriteSheet" style="background-image: url({{game.petSpritesheetLink}})"></div>
+          <p id="msgTextTwoLiner" ng-hide="currentTracking.time == 0 && currentTracking.km == 0 && currentTracking.repetitions == 0" ng-click="closeFeedback()">{{receiveNotificationMsg()}}</p>
+          <img ng-src="assets/img/message.png" class="msg score" ng-hide="currentTracking.time == 0 && currentTracking.km == 0 && currentTracking.repetitions == 0" ng-click="closeFeedback()"/>
+        </div>
+
+        <!-- Backpack -->
+        <a class="btn" href="#/backpack" ng-click="closeFeedback(); changePath('#/')">
+          <img ng-src="assets/img/backpack/backpack.png" class="backpack home" />
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <ion-footer-bar align-title="center">
+        <a class="col button button-calm startActivity" href="#/tracking" ng-click="closeFeedback()"><p class="startActivityText">{{startActivity}}</p></a>
+      </ion-footer-bar>
+
+    </div>
+
+    <!-- New Game View -->
+    <div ng-show="game.gameOver" class="newGame">
+      
+      <div class="bar bar-header bar-energized">
+        <h1 style="margin-top: 20px">Create Your Own Pet</h1>
+      </div>
+
+      <div class="container">
+        <form role="form" name="createForm">
+          <!-- Name -->
+          <div class="form-group ">
+            <label for="petName">{{petNameLabel}}</label>
+            <div class="row">
+              <input id="nameInput" type="text" name="petName" ng-model="game.petName" ng-minlength="3" ng-maxlength="10" placeholder="Add a name ..." required="true" />
+              <span id="reqInfo" ng-show="createForm.petName.$error.minlength">(at least 3 characters)</span>
+              <span id="reqInfo" ng-show="createForm.petName.$error.maxlength">(max 10 characters)</span>
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label for="petGender">{{petGenderLabel}}</label>
+            <br />
+            <label class="radio-inline">
+              <input type="radio" name="petGender" ng-model="game.petGender" value="f" required />
+              <img class="gender female" ng-src="assets/img/female.png" />
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="petGender" ng-model="game.petGender" value="m" required />
+              <img class="gender male" ng-src="assets/img/male.png" />
+            </label>
+          </div>
+
+          <!-- Pet -->
+          <div class="form-group" style="text-align: center">
+            <button type="button" class="btn petChoice" ng-click="previousAnimal(currentPet)" style="left: 15%;">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <img ng-src="{{currentPet.pic}}" class="pet" />
+            <button type="button" class="btn petChoice" style="margin-left: 20px; right: 15%;" ng-click="nextAnimal(currentPet)">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+          </div>
+
+        </form>
+      </div>     
+
+      <ion-footer-bar align-title="center">
+        <button class="col button button-create" ng-click="newGame(game.petName, game.petGender)" ng-disabled="createForm.$invalid || game.petGender == 'n'">
+            {{createPetButton}}
+        </button>
+      </ion-footer-bar>      
+
+    </div>
+
+  </ion-content>
+</ion-view>

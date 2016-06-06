@@ -1,0 +1,83 @@
+.tracking {
+	background: url('../img/outdoor.png') no-repeat;
+	height: 100vh;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+}
+
+.button.backTracking {
+	background-color: none;
+}
+
+.slider {
+	position: fixed;
+	bottom: 100px;
+	width: 100%;
+	height: 50px;
+}
+
+.sliderPic {
+	height: 30px;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 5px;
+}
+
+.sliderButton {
+	background: none;
+}
+
+.carousel {
+	position: fixed;
+	bottom: 60px;
+	margin: 0px;
+	margin-bottom: 10px;
+	width: 100%;
+
+	background-color: white;
+}
+
+#slideBox {
+	text-align: center;
+}
+
+#slideText {
+	margin: 0px;
+	margin-top: 5px;
+}
+
+#middleBox {
+	background: #f0f5f5; 
+}
+
+.row.trackingButton {
+	margin: 0;
+	padding: 0;
+}
+
+.sportMiddle {
+	position: fixed;
+	right: 10%;
+	top: 60%;
+
+	height: 60px;
+}
+
+.sportBig {
+	position: fixed;
+	right: 10%;
+	top: 50%;
+
+	height: 140px;
+}
+
+.yoga {
+	position: fixed;
+	right: 10%;
+	top: 50%;
+
+	height: 110px;
+}

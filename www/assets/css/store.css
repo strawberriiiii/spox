@@ -1,0 +1,38 @@
+#listPicStore {
+  	width: 35px;
+  	margin-left: 20px;
+}
+
+#picColStore {
+  	vertical-align: middle;
+  	width: 3%;
+  	margin: 0px;
+}
+
+#nameColStore {
+  	vertical-align: middle;
+  	width: 40%;
+  	padding-left: 5%;
+}
+
+.itemStore {
+	padding-top: 9px;
+  	padding-bottom: 9px;
+  	padding-right: 9px;
+  	padding-left: 9px;
+}
+
+.neededGoods {
+  	font-size: 11px;
+  	margin: 0px;
+}
+
+#amountGoodsStore {
+	text-align: right;
+	padding-right: 5px;
+}
+
+#mark {
+	height: 10px;
+	padding-left: 10px;
+}

@@ -1,0 +1,72 @@
+<!-- www/templates/game.html -->
+<ion-view view-title="Gym" class="gym-page" cache-view="false">
+  <ion-content scroll="false">
+  
+  <!-- Header -->
+  <div class="bar bar-header bar-energized bar-long">
+      <a class="button" ng-href="#/" id="backButton">
+        <img ng-src="assets/img/back_button.png" id="backButtonPic" />
+      </a>
+      <h1>{{game.petName}}{{gymLabel}}</h1>
+
+      <!-- User Satisfaction -->
+      <img ng-src="{{getUserSatisfactionPic()}}" id="userSmiley" />
+      <canvas id="userSatisfactionGraph" ng-init="drawUserSat()"></canvas>
+      <p id="userSatisfaction">{{gym.userSatisfaction}}%</p>
+      
+      <!-- Buttons -->
+      <a class="button" href="#/store" id="storeButton" ng-disabled="isLocked">
+        <img ng-src="assets/img/gym/shoppingcart.png" id="storeButtonPic" />
+      </a>
+      <a class="button" href="#/backpack" id="backpackButton" ng-click="changePath('#/gym/')">
+        <img ng-src="assets/img/backpack/backpack.png" id="backpackButtonPic" />
+      </a>
+
+      <!-- Level Item -->
+      <img ng-src="assets/img/level_button.png" id="levelButton" />
+      <p id="level">{{game.level}}</p>
+
+      <div ng-include="'app/components/gym/goods.html'"></div>
+
+      <div class="infoFieldBuy" ng-show="itemCurrentlyBought">
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 65%">
+              <p id="boughtItem">Place the {{boughtItem.name}} <br /> in one of your rooms.</p>
+            </td>
+            <td style="width: 35%" ng-drag="true" ng-drag-data="boughtItem"  ng-center-anchor="true">
+              <div >
+                <img id="boughtItemPic" ng-src="{{boughtItem.pic}}" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div> 
+
+
+  </div>
+
+  <!-- Content -->
+  <ion-content class="list-background" scroll="false">
+    
+    <div ng-include="'app/components/gym/room1.html'"></div>
+
+    <div ng-include="'app/components/gym/room2.html'"></div>
+    
+    <div ng-include="'app/components/gym/room3.html'"></div>
+
+    <div ng-include="'app/components/gym/room4.html'"></div>
+
+    <div ng-include="'app/components/gym/room5.html'"></div>
+
+  </ion-content>
+
+  <!-- Footer -->
+  <ion-footer-bar align-title="center">
+    <a class="col button button-calm startActivity" href="#/tracking">
+      <p class="startActivityText">{{startActivity}}</p>
+    </a>
+  </ion-footer-bar>
+
+  </ion-content>
+</ion-view>

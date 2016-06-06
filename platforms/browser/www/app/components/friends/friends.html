@@ -1,0 +1,102 @@
+<!-- www/templates/game.html -->
+<ion-view view-title="Friends" class="friends-page">
+  <ion-content scroll="false">
+  
+    <!-- Header -->
+  	<div class="bar bar-header bar-energized">
+        <a class="button" href="#/">
+          <img ng-src="assets/img/back_button.png" id="backButton" />
+        </a>
+        <h1>{{friendsLabel}}</h1>
+        <img ng-src="assets/img/level_button.png" id="levelButton" />
+        <p id="level">{{game.level}}</p>
+     </div>
+      
+    <!-- Content -->
+    <ion-content>
+      <div class="friends list-background">
+
+        <div class="friendsContainer">
+          <h4 id="allUsers">{{myFriendsLabel}}</h4>
+          <div class="list card" ng-repeat="friend in connectedFriends" ng-show="connectedWithFacebook">
+            <div class="item itemFriends">
+              <table class="listTable">
+                <tr>
+                  <td id="picColFriends">
+                    <img ng-src="{{pets[friend.petType].pic}}" id="listPic" />
+                  </td>     
+                  <td id="nameColFriends">{{friend.name}}</td>
+                  <td id="levelColFriends">Level {{friend.level}}</td>
+                  <td id="collectColFriends">
+                    Collects 
+                    <br />
+                    {{pets[friend.petType].good1}} &amp; {{pets[friend.petType].good2}}
+                  </td>
+                  <td id="buttonCol">
+                    <button class="button tradeButton" style="font-size: 14px; padding-left: 10px; padding-right: 10px;" ng-click="teamUpWithFriend(friend)" ng-disabled="connectedFriend != null" ng-show="connectedFriend != friend">
+                      {{teamUp}}
+                    </button>
+                    <button class="button detachButton" ng-click="detachFriend()" ng-show="connectedFriend == friend">
+                      {{detach}}
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div style="text-align: center">
+            <a class="button inviteButton" ng-href="mailto:">{{inviteFriends}}</a>
+
+            <button class="button facebookButton" ng-click="connectWithFacebook()" ng-show="connectedWithFacebook == false">
+              {{connectWithFacebookLabel}}
+            </button>
+            <button class="button facebookButton" ng-click="disconnectWithFacebook()" ng-show="connectedWithFacebook == true">
+              {{disconnectWithFacebookLabel}}
+            </button>
+          </div>
+
+        </div>
+
+        <div class="friendsContainer">
+          <h4 id="allUsers">{{allUsersLabel}}</h4>
+          <div class="list card" ng-repeat="user in allUsers">
+            <div class="item itemFriends">
+              <table class="listTable">
+                <tr>
+                  <td id="picColFriends">
+                    <img ng-src="{{pets[user.petType].pic}}" id="listPic" />
+                  </td>     
+                  <td id="nameColFriends">{{user.name}}</td>
+                  <td id="levelColFriends">Level {{user.level}}</td>
+                  <td id="collectColFriends">
+                    Collects 
+                    <br />
+                    {{pets[user.petType].good1}} &amp; {{pets[user.petType].good2}}
+                  </td>
+                  <td id="buttonCol">
+                    <button class="button tradeButton" style="font-size: 14px; padding-left: 10px; padding-right: 10px;" ng-click="teamUpWithFriend(user)" ng-disabled="connectedFriend != null" ng-show="connectedFriend != user">
+                      {{teamUp}}
+                    </button>
+                    <button class="button detachButton" ng-click="detachFriend()" ng-show="connectedFriend == user">
+                      {{detach}}
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </ion-content>
+
+  	<!-- Footer -->
+    <ion-footer-bar align-title="center">
+      <a class="col button button-calm startActivity" href="#/tracking">
+        <p class="startActivityText">{{startActivity}}</p>
+      </a>
+    </ion-footer-bar>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,80 @@
+#picColFriends {
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-right: 10px;
+	width: 35px;
+}
+
+#nameColFriends {
+	font-size: 5;
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-right: 5%;
+	width: 25%;
+}
+
+#levelColFriends {
+	font-size: 11px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-left: 1%;
+	padding-right: 5%;
+	width: 25%;
+}
+
+#collectColFriends {
+	font-size: 11px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-right: 5%;
+	width: 30%;
+}
+
+.item.itemFriends {
+	padding-left: 0px;
+	background-color: #487f7e;
+	color: white;
+}
+
+.friendsContainer {
+	border-radius: 15px;
+	border: 3px solid #f39200;
+	background-color: white;
+
+	margin: 10px;
+	padding-bottom: 1px;
+}
+
+.inviteButton {
+	margin: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #6a0f5a;
+	color: white;
+	font-size: 14px;
+}
+
+.facebookButton {
+	margin: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #3B5998;
+	color: white;
+	font-size: 14px;
+}
+
+.detachButton {
+	background-color: #98a0da;
+	color: white;
+	font-size: 13px;
+	padding-left: 17px;
+	padding-right: 16.5px;
+}
+
+#allUsers {
+	margin-top: 20px;
+	text-align: center;
+	color: #a60b28;
+}

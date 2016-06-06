@@ -1,0 +1,95 @@
+.tradeButton {
+  background-color: #f2be43; 
+}
+
+#amountCol {
+  vertical-align: middle;
+  text-align: right;
+  width: 10%;
+  padding-right: 5%;
+}
+
+#picCol {
+  vertical-align: middle;
+  width: 30%;
+}
+
+#nameCol {
+  vertical-align: middle;
+  padding-left: 5%;
+}
+
+.tradeDialog {
+	height: 200px;
+	width: 70%;
+	background-color: #f2be43;
+	border: 1px solid;
+	border-radius: 10px;
+	color: #000000;
+	text-align: center;
+
+	padding: 10px;
+	position: fixed;
+	left: 13%;
+	top: 50%;
+	margin-top: -100px;
+	z-index: 9;
+}
+
+.titleTradeDialog {
+	text-align: center;
+}
+
+.closeButton {
+	height: 25px;
+	width: 25px;
+	border-radius: 10px;
+	padding: 0px;
+	background-color: #a60b28;
+	color: #f2be43;
+}
+
+#tradePic {
+	height: 40px;
+	padding: 5px;
+}
+
+#tradeText {
+	font-size: 14px;
+	padding: 5px;
+}
+
+.btn.amountButton {
+	min-height: 20px;
+	height: 20px;
+	min-width: 20px;
+	font-size: 12px;
+	padding: 0px;
+}
+
+.button.tradeItemButton {
+	min-height: 15px;
+	height: 40px;
+	margin-top: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	background-color: #2f5554;
+	font-size: 13px;
+	color: #f2be43;
+	vertical-align: middle;
+}
+
+.opacityBackground {
+	background-color: gray;
+	opacity: 0.7;
+
+	height: 100%;
+	width: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}

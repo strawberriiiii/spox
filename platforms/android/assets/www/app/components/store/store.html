@@ -1,0 +1,69 @@
+<!-- www/templates/game.html -->
+<ion-view view-title="Store" class="store-page">
+  <ion-content scroll="false">
+  
+  	<div class="bar bar-header bar-energized">
+        <a class="button" href="#/gym/">
+          <img ng-src="assets/img/back_button.png" id="backButton" />
+        </a>
+        <h1>{{storeLabel}}</h1>
+        <img ng-src="assets/img/level_button.png" id="levelButton" />
+        <p id="level">{{game.level}}</p>
+     </div>
+
+    <!-- Content -->
+    <ion-content>
+      <div class="backpack list-background">
+
+        <div class="list card" ng-repeat="item in store">
+          <div class="item" ng-show="isUnlockedItem(item)">
+            <table class="listTable">
+              <tr>
+                <td id="picColStore">
+                  <img ng-src="{{item.pic}}" id="listPicStore" />
+                </td>     
+                <td id="nameColStore">{{item.name}}</td>
+                <td>
+                  <table class="neededGoods">
+                    <tr ng-repeat="(good, amount) in item.neededGoods">
+                      <td id="amountGoodsStore">{{amount}}</td>
+                      <td>{{good}}</td>
+                      <td>
+                        <img ng-src="{{isEnoughGood(good, amount)}}" id="mark" />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td id="buttonCol">
+                  <button class="button tradeButton" ng-click="buyItem(item); isItemBought(item); go('#/gym/');" ng-disabled="buyButtonIsDisabled(item.neededGoods)">
+                    {{buy}}
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="item" ng-hide="isUnlockedItem(item)">
+            <table class="listTable">
+              <tr>
+                <td id="picColStore">
+                  <img ng-src="{{item.pic}}" id="listPicStore" />
+                </td>     
+                <td id="nameColStore">{{unlockLabel}}{{item.unlockLevel}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </ion-content>
+
+  	<!-- Footer -->
+    <ion-footer-bar align-title="center">
+      <a class="col button button-calm startActivity" href="#/tracking">
+        <p class="startActivityText">{{startActivity}}</p>
+      </a>
+    </ion-footer-bar>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,42 @@
+<!-- Room 5 -->
+<div>
+
+  <div ng-show="gym.rooms.room5.status == 'forSale'" class="room5" id="forSale">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <p class="requiredGoodsForRoom">{{requiredGoodsForRoomLabel}}</p>
+          <p class="requiredGoodsForRoom" ng-repeat="(item, amount) in gym.rooms.room5.requiredGoods">{{amount}} {{item}}</p>
+        </td>
+        <td>
+          <img ng-src="assets/img/gym/sign.png" class="saleSign"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="button" class="btn saleButton" ng-click="buyRoom('room5')" ng-disabled="isBuyRoomDisabled('room5')">{{buyRoomLabel}}</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-show="gym.rooms.room5.status == 'underConstruction'" class="room5" id="underConstruction">
+    <img ng-src="assets/img/gym/kran.png" class="kran"/>
+    <p class="requiredGoodsForRoom">{{constructionLabel}}</p>
+    <p class="requiredGoodsForRoom">{{timeLabel}}{{}}</p>
+  </div>
+
+  <div ng-show="gym.rooms.room5.status == 'bought'" class="room5" id="room5">
+    <div class="row dropzoneRow" ng-repeat="i in [0, 1]">
+      <div class="col dropzoneCol" ng-repeat="j in [0, 1, 2, 3, 4, 5, 6]">
+        <div ng-drop="true" ng-drop-success="onDropComplete([$data, i, j, 'room5'], $event)" class="dropzone" ng-hide="hideDropzone(i, j, 'room5')">
+        </div>
+        <img id="gymItemPic" ng-src="{{gym.rooms.room5.itemPlaced[getPicPosition(i, j, 'room5')].pic}}"  ng-show="hideDropzone(i, j, 'room5')"/>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="gym.rooms.room5.status == 'locked'" class="room5" id="lockedRoom">
+    <img ng-src="assets/img/gym/unlock_friends.png" id="unlockSignRoom5"/>
+  </div>
+</div>
