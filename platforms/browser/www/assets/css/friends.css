@@ -1,26 +1,29 @@
 #picColFriends {
 	vertical-align: middle;
 	padding-top: 5px;
-	padding-right: 10px;
-	width: 35px;
+	padding-right: 5px;
+	padding-left: 10px;
+	width: 65px;
+}
+
+#listPicFriend {
+	height: 40px;
 }
 
 #nameColFriends {
-	font-size: 5;
+	font-size: 15px;
 	vertical-align: middle;
 	padding-top: 5px;
-	padding-right: 5%;
-	width: 25%;
+	width: 80px;
 }
 
 #levelColFriends {
 	font-size: 11px;
-	text-align: center;
+	text-align: left;
 	vertical-align: middle;
 	padding-top: 5px;
-	padding-left: 1%;
-	padding-right: 5%;
-	width: 25%;
+
+	width: 100px;
 }
 
 #collectColFriends {
@@ -29,7 +32,7 @@
 	vertical-align: middle;
 	padding-top: 5px;
 	padding-right: 5%;
-	width: 30%;
+	width: 100px;
 }
 
 .item.itemFriends {

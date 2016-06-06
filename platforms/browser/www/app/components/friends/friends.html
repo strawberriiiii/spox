@@ -24,7 +24,7 @@
               <table class="listTable" style="width: 100%">
                 <tr>
                   <td id="picColFriends">
-                    <img ng-src="{{pets[friend.petType].pic}}" id="listPic" />
+                    <img ng-src="{{pets[friend.petType].pic}}" id="listPicFriend" />
                   </td>     
                   <td id="nameColFriends">{{friend.name}}</td>
                   <td id="levelColFriends">Level {{friend.level}}</td>
@@ -65,10 +65,10 @@
           <h4 id="allUsers">{{allUsersLabel}}</h4>
           <div class="list card" ng-repeat="user in allUsers">
             <div class="item itemFriends">
-              <table class="listTable">
+              <table class="listTable" style="width: 100%">
                 <tr>
                   <td id="picColFriends">
-                    <img ng-src="{{pets[user.petType].pic}}" id="listPic" />
+                    <img ng-src="{{pets[user.petType].pic}}" id="listPicFriend" />
                   </td>     
                   <td id="nameColFriends">{{user.name}}</td>
                   <td id="levelColFriends">Level {{user.level}}</td>

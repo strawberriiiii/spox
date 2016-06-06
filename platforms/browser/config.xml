@@ -22,13 +22,6 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-    <gap:config-file parent="/manifest" platform="android">
-        <supports-screens android:largeScreens="true" android:smallScreens="true" android:xlargeScreens="true" />
-        <application android:theme="@android:style/Theme.NoTitleBar">
-            <activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-            </activity>
-        </application>
-    </gap:config-file>
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
