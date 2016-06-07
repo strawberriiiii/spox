@@ -1,10 +1,10 @@
 angular.module('petGame.gameService', ['petGame.storeService'])
-.factory('Game', function($interval, Store) {
+.factory('Game', function($interval, $location, Store, Backpack, Gym, Friends) {
 	
 	// Object game 
 	var o = {
 		game: {
-			health: 0,
+			health: 30,
 			petName: "",
 			petGender: "n",
 			petType: null,
@@ -38,7 +38,9 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 				pic: "assets/img/pet/turtle.png"
 			}
 		}
-	};	
+	};
+
+	var gameInv = null;	
 		
 	// Creates a new game
 	o.newGame = function(petName, petGender, petType) {
@@ -46,10 +48,10 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 		o.game.petGender = petGender;
 		o.game.petType = petType;
 		setSpritesheetLink(petType);
-		resetHealth();
 		resetLevel();
+		resetHealth();
 		o.game.gameOver = false;
-		startInt();
+		o.startInt();
 		startProv();
 	};
 	
@@ -63,22 +65,56 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 		
 	};
 	
-	// Reduces both scores after setted time
-	o.reduceScores = function() {
+	// Reduces the health of the pet after setted time
+	o.reduceHealth = function() {
 		o.game.health -= 10;
 		
+		if (o.game.health < 60 && o.game.health > 30) {
+			$('.spriteSheet').animateSprite('play', 'normal');
+		}
+
+		if (o.game.health <= 30 && o.game.health > 0) {
+			$('.spriteSheet').animateSprite('play', 'sad');
+		}
+
 		if (o.game.health == 0) {
-			$('#pet').animateSprite('play', 'dead');
+			$('.spriteSheet').animateSprite('play', 'dead');
 			setTimeout(function() {
 				o.game.gameOver = true;
 				o.game.petName = "";
 				o.game.petGender = "n";
 				o.game.level = 1;
+				o.game.health = 30;
 				o.game.petType = null;
 				o.game.petSpritesheetLink = "";
+				Gym.resetGym();
+				Backpack.resetBackpack();
+				Friends.friend = null;
+          		Friends.connectedWithFacebook = false;
+          		Store.resetStore();
+				$location.path('#/');
 			}, 10);
 		} 
+
+		var c = document.getElementById('healthGraph');
+		if (c != null) {
+			var canvas = c.getContext("2d");
+			var yPos = 135 - o.game.health * 1.1;
+		  	var yLength = (15 + o.game.health) * 2.2;
+			canvas.clearRect(0, 0, 400, 500);
+			o.drawHealth();
+		}
+
 		console.log("Health: " + o.game.health);
+	};
+
+	// Increases the health of the pet after a completed activity
+	o.increaseHealth = function() {
+		o.game.health += 100;
+
+		if (o.game.health > 100) {
+			o.game.health = 100;
+		}
 	};
 
 	// Level up
@@ -141,34 +177,64 @@ angular.module('petGame.gameService', ['petGame.storeService'])
         }
 	};
 
+	// Draws the health state bar
+	o.drawHealth = function() {
+		var c = document.getElementById('healthGraph');
+		var canvas = c.getContext("2d");
+		canvas.beginPath();
+
+		if (o.game.health < 25) {
+	    	canvas.fillStyle = "#ed1111";
+	  	} else if (o.game.health >= 25 && o.game.health < 75) {
+	        canvas.fillStyle = "#ffee00";
+	  	} else {
+	       canvas.fillStyle = "#66cc66";
+	  	}
+	  	
+	  	var yPos = 135 - o.game.health * 1.1;
+	  	var yLength = (15 + o.game.health) * 2.2;
+
+	  	if (o.game.health > 95) {
+	    	canvas.rect(0, 0, 400, yLength);
+	  	} else {
+	       	canvas.rect(0, yPos, 400, yLength);
+	  	}
+	  	canvas.fill();
+	};
+
+
+	// Starts the timer
+	o.startInt = function() {
+        gameInv = $interval(function() {
+            o.reduceHealth();
+            }, 30000);
+    };
+
+    // Stops the timer
+    o.stopInt = function() {
+    	$interval.cancel(gameInv);
+    };
+
 	return o;
 
 	/* 
 	 * Support functions
 	 */
 
-	// Resets health score
 	function resetHealth() {
-		o.game.health = 100;
-	};
+		o.game.health = 30;
+	}; 
 	
 	// Resets level
 	function resetLevel() {
 		o.game.level = 1;
 	};
-
-	// Starts the timer
-	function startInt() {
-        /*var gameInv = $interval(function() {
-            o.reduceScores();
-            }, 10000);*/
-    };
     
     // Starts the timer for checking, if the game is already over to cancel the other timer
     function startProv() {
     	var proveInv = $interval(function() {
 	        if (o.game.gameOver == true) {
-	            $interval.cancel(gameInv);
+	            o.stopInt();
 	            $interval.cancel(proveInv);
 	            console.log("game over");
 	        }

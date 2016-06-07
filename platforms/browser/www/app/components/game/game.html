@@ -1,5 +1,5 @@
 <!-- www/templates/game.html -->
-<ion-view view-title="Game">
+<ion-view view-title="Game" cache-view="false">
   <ion-content scroll="false">
 
     <!-- Game View -->
@@ -43,6 +43,15 @@
         <a class="btn" href="#/backpack" ng-click="closeFeedback(); changePath('#/')">
           <img ng-src="assets/img/backpack/backpack.png" class="backpack home" />
         </a>
+
+        <!-- Health bar -->
+        <canvas id="healthGraph" ng-init="drawHealth()"></canvas>
+        <p id="healthLabel">Health: {{game.health}}%</p>
+
+        <!-- Game over text -->
+        <h1 class="gameOver" ng-show="game.health == 0">Game over</h1>
+        <div class="opacityBackground" ng-show="game.health == 0">
+        </div>
       </div>
 
       <!-- Footer -->
@@ -100,7 +109,7 @@
       </div>     
 
       <ion-footer-bar align-title="center">
-        <button class="col button button-create" ng-click="newGame(game.petName, game.petGender)" ng-disabled="createForm.$invalid || game.petGender == 'n'">
+        <button class="col button button-create" style="font-size: 16px" ng-click="newGame(game.petName, game.petGender)" ng-disabled="createForm.$invalid || game.petGender == 'n'">
             {{createPetButton}}
         </button>
       </ion-footer-bar>      

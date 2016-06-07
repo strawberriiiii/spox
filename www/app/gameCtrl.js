@@ -94,7 +94,9 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         animations: {
             happy: [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 3, 6, 3, 0, 0, 0, 0, 0, 
                     3, 6, 3, 0, 0, 0, 0, 0, 3, 6, 3, 0, 0, 0, 0, 0, 3, 6, 3, 0],
-            sad: [3, 6, 3]
+            normal: [3, 3, 3, 3, 3, 3, 3, 6, 3, 3, 3, 3, 3, 3],
+            sad: [3, 3, 3, 3, 3, 6, 7, 7, 7, 6, 3, 3, 3, 3, 3],
+            dead: [8, 8, 8]
         }
     });
 
@@ -106,7 +108,7 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
     $scope.newGame = function (petName, petGender) {
         Game.newGame(petName, petGender, $scope.currentPet);
         console.log("Name: " + $scope.game.petName + ", Sex: " + $scope.game.petGender + ", Type: " + $scope.game.petType.name);
-        $('#pet').animateSprite('play', 'normal');
+        $('.spriteSheet').animateSprite('play', 'sad');
     };
 
     // Changes page 
@@ -138,6 +140,11 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
     // Retrieves the previous animal
     $scope.previousAnimal = function(currentPet) {
         $scope.currentPet = Game.previousAnimal(currentPet);
+    };
+
+    // Draws the graph for the health state of the animal
+    $scope.drawHealth = function() {
+        return Game.drawHealth();
     };
 
     // Returns true if the amount of a good is 0
@@ -428,12 +435,13 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
             $scope.tracking = true;
             Tracking.startTracking(sport);
         }
+
+        Game.stopInt();
     };
 
     // Pauses the tracking of a specific activity
     $scope.pauseTracking = function(sport) {
         $scope.activityStarted = false;
-        console.log($scope.currentTracking.time);
 
         if (Tracking.isTimer(sport)) {
             $interval.cancel($scope.timer);
@@ -446,6 +454,8 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         if (Tracking.isKm(sport)) {
             Tracking.pauseTracking(sport);
         }
+
+        Game.startInt();
     };
 
     // Stops the tracking of a specific activity
@@ -475,9 +485,19 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         }
 
         if ($scope.game.petType != null) {
-            Backpack.increaseAmount($scope.game.petType.good1, 5);
-            Backpack.increaseAmount($scope.game.petType.good2, 4);
+            var amount1 = 5;
+            var amount2 = 4;
+            if ($scope.connectedFriend != null) {
+                amount1 *= 2;
+                amount2 *= 2;
+            }
+            Backpack.increaseAmount($scope.game.petType.good1, amount1);
+            Backpack.increaseAmount($scope.game.petType.good2, amount2);
         }
+
+        $('.spriteSheet').animateSprite('play', 'happy');
+        Game.increaseHealth();
+        Game.startInt();
     };
 
     function toHHMMSS(sec) {
@@ -559,7 +579,6 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         Gym.buyRoom('room5');
         Gym.increaseUserSatisfaction(20);
         $scope.unlockStore();
-        console.log($scope.isLocked);
     };
 
     // Detaches the current friend

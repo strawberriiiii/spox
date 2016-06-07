@@ -88,6 +88,7 @@ h1 {
 
 .startActivityText {
   margin-top: 10px;
+  font-size: 18px;
 }
 
 #backButton {
@@ -160,7 +161,7 @@ h1 {
 
 .msg {
   height: 110px;
-  width: 170px;
+  width: 182px;
   margin-top: 0px;
   margin-left: 0px;
 
@@ -204,4 +205,16 @@ h1 {
   position: fixed;
   right: 5%;
   top: 18%;
+}
+
+.gameOver {
+  position: fixed;
+  top: 40%;
+  left: 8%;
+  margin-left: 0px;
+  z-index: 5;
+
+  font-weight: bold;
+  font-size: 60px;
+  text-shadow: -2px 0 #600617, 0 2px #600617, 2px 0 #600617, 0 -2px #600617;
 }

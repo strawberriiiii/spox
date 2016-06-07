@@ -185,6 +185,24 @@ angular.module('petGame.gymService', ['petGame.backpackService'])
           return ;
      };
 
+     o.resetGym = function() {
+          for (room in o.gym.rooms) {
+               console.log(room);
+               for (i = 0; i < o.gym.rooms[room].itemPlaced.length; i++) {
+                    o.gym.rooms[room].itemPlaced[i] = null;
+               }
+               if (o.gym.rooms[room].unlockLevel == 1) {
+                    o.gym.rooms[room].status = "forSale";
+                    console.log("here");
+               } else {
+                    o.gym.rooms[room].status = "locked";
+                    console.log("here2");
+               }
+          }
+          o.gym.userSatisfaction = 0;
+
+     };
+
      // Sets the status of the room to "bought", after the construction time is over
      function setRoomToBought(room) {
           o.gym.rooms[room].status = "bought";

@@ -88,6 +88,12 @@ angular.module('petGame.backpackService', [])
           return false;
      };
 
+     o.resetBackpack = function() {
+          for (good in o.backpack) {
+               o.backpack[good].amount = 0;
+          }
+     };
+
      return o;
 });
 	

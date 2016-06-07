@@ -122,6 +122,12 @@ angular.module('petGame.storeService', [])
           return array;
      };
 
+     o.resetStore = function() {
+          for (item in o.store) {
+               o.store[item].amount = 0;
+          };
+     };
+
      return o;
 });
 	

@@ -50,16 +50,21 @@ API Key = AIzaSyAaYVXmtn1-IXaF1vu9wD2DFH0XRpDY1ZU -->
       </button>
     </div>
 
+    <!-- Game over text -->
+    <h1 class="gameOver" ng-show="game.health == 0">Game over</h1>
+    <div class="opacityBackground" ng-show="game.health == 0">
+    </div>
+
     <!-- Footer -->
   	<ion-footer-bar align-title="center">
-      <button class="col button button-balanced" ng-click="startTracking(sliderPics[1].name.toLowerCase())" ng-hide="activityStarted">
+      <button class="col button button-balanced" style="font-size: 16px" ng-click="startTracking(sliderPics[1].name.toLowerCase())" ng-hide="activityStarted">
         {{startTrackingButton}}
       </button>
       <div class="row trackingButton" ng-show="activityStarted">
-        <button class="col button button-energized" ng-click="pauseTracking(sliderPics[1].name.toLowerCase())">
+        <button class="col button button-energized"  style="font-size: 16px" ng-click="pauseTracking(sliderPics[1].name.toLowerCase())">
           {{pauseTrackingButton}}
         </button>
-        <button class="col button button-assertive" ng-click="stopTracking(sliderPics[1].name.toLowerCase()); go('home')">
+        <button class="col button button-assertive" style="font-size: 16px" ng-click="stopTracking(sliderPics[1].name.toLowerCase()); go('home')">
           {{stopTrackingButton}}
         </button>
       </div>

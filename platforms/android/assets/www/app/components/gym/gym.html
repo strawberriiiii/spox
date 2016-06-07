@@ -61,6 +61,11 @@
 
   </ion-content>
 
+  <!-- Game over text -->
+  <h1 class="gameOver" ng-show="game.health == 0">Game over</h1>
+  <div class="opacityBackground" ng-show="game.health == 0">
+  </div>
+
   <!-- Footer -->
   <ion-footer-bar align-title="center">
     <a class="col button button-calm startActivity" href="#/tracking">

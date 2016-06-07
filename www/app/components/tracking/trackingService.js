@@ -1,5 +1,5 @@
 angular.module('petGame.trackingService', [])
-.factory('Tracking', function($interval, Game) {
+.factory('Tracking', function($interval, Game, Friends) {
 	
 	var o = {
 		sports: {
@@ -91,8 +91,10 @@ angular.module('petGame.trackingService', [])
         }
     	var string = "You've received ";
 
-        if (pet != null) {
+        if (pet != null && Friends.friend == null) {
             string += "5 " + pet.good1 + " and 4 " + pet.good2 + " ";
+        } else if (pet != null && Friends.friend != null) {
+            string += "10 " + pet.good1 + " and 8 " + pet.good2 + " ";
         } else {
             string += "nothing ";
         }       
