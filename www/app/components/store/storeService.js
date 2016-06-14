@@ -9,9 +9,9 @@ angular.module('petGame.storeService', [])
           		name: 'Exercise bike',
                     pic: 'assets/img/gym/gymcycle.png',
           		neededGoods: {
-                         glass: 7,
-                         steel: 15,
-                         stone: 10
+                         glass: 2,
+                         steel: 1,
+                         stone: 1
                     },
                     unlockLevel: 1,
                     amount: 0
@@ -20,9 +20,9 @@ angular.module('petGame.storeService', [])
           		name: 'Ball court',
                     pic: 'assets/img/gym/football.png',
                     neededGoods: {
-                         steel: 9,
-                         stone: 5,
-                         wood: 15
+                         steel: 2,
+                         stone: 1,
+                         wood: 1
                     },
                     unlockLevel: 1,
                     amount: 0
@@ -31,9 +31,9 @@ angular.module('petGame.storeService', [])
           		name: 'Dance class',
                     pic: 'assets/img/gym/radio.png',
                     neededGoods: {
-                         glass: 32,
-                         steel: 15,
-                         stone: 20
+                         glass: 1,
+                         steel: 1,
+                         stone: 2
                     }, 
                     unlockLevel: 1,
                     amount: 0
@@ -122,6 +122,7 @@ angular.module('petGame.storeService', [])
           return array;
      };
 
+     // Resets the store, when it is game over
      o.resetStore = function() {
           for (item in o.store) {
                o.store[item].amount = 0;

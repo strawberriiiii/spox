@@ -189,12 +189,7 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
                 break;
             }
         }
-
-        /*if ($scope.tradeItem.amount % 2 === 0) {
-            $scope.tradeItemAmount = $scope.tradeItem.amount;
-        } else {
-            $scope.tradeItemAmount = $scope.tradeItem.amount - 1;
-        }*/
+        
         $scope.tradeItemAmount = 2;
         $scope.otherItemAmount = $scope.tradeItemAmount / 2;
 
@@ -428,7 +423,7 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
             //Initialize the Timer to run every 1000 milliseconds i.e. one second.
             $scope.repTimer = $interval(function () {
                 $scope.repCount++;
-            }, 5000);
+            }, 2000);
         }
 
         if (Tracking.isKm(sport)) {
@@ -463,6 +458,9 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         $scope.activityStarted = false;
         $scope.showSlider = true;
         $scope.msgText = null;
+        if ($scope.connectedFriend != null) {
+            Tracking.currentTracking.currentTurn++;
+        }
 
         if (Tracking.isTimer(sport)) {
             Tracking.currentTracking.time = $scope.message;
@@ -487,7 +485,7 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         if ($scope.game.petType != null) {
             var amount1 = 5;
             var amount2 = 4;
-            if ($scope.connectedFriend != null) {
+            if ($scope.connectedFriend != null && Tracking.currentTracking.currentTurn > 1) {
                 amount1 *= 2;
                 amount2 *= 2;
             }
@@ -599,14 +597,5 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
         $scope.connectedWithFacebook = obj[0];
         $scope.connectedFriend = obj[1];
     };
- 
-    $scope.makeHappy = function(thing) {
-    	Game.updateScores(thing);
-    	$('#pet').animateSprite('play', 'happy');
-    	console.log(thing);
-    	setTimeout(function() {
-			$('#pet').animateSprite('play', 'normal');
-		}, 1000);
-	};
 
 });

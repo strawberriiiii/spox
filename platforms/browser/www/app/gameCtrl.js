@@ -428,7 +428,7 @@ angular.module('petGame.controllers', ['ionic', 'petGame.gameService', 'petGame.
             //Initialize the Timer to run every 1000 milliseconds i.e. one second.
             $scope.repTimer = $interval(function () {
                 $scope.repCount++;
-            }, 5000);
+            }, 2000);
         }
 
         if (Tracking.isKm(sport)) {

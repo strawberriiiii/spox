@@ -55,21 +55,25 @@ angular.module('petGame.friendsService', [])
           connectedWithFacebook: false
      };
 
+     // Detaches a friend, so that a new friend can be picked
      friends.detachFriend = function() {
           friends.friend = null;
           return friends.friend;
      };
 
+     // Teams up with a friend, so that the user can get the boni of a having a friend
      friends.teamUpWithFriend = function(friend) {
      	friends.friend = friend;
      	return friends.friend;
      };
 
+     // Connects with facebook, so that user can team up with his/her own friends
      friends.connectWithFacebook = function() {
           friends.connectedWithFacebook = true;
           return friends.connectedWithFacebook;
      };
 
+     // Disconnects with facebook
      friends.disconnectWithFacebook = function() {
           friends.connectedWithFacebook = false;
           for (f in friends.connectedFriends) {
