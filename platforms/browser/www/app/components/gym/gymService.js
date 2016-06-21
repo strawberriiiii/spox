@@ -11,10 +11,10 @@ angular.module('petGame.gymService', ['petGame.backpackService'])
                          status: "forSale",
                          unlockLevel: 1,
                          requiredGoods: {
-                              glass: 5,
-                              steel: 10,
-                              stone: 7,
-                              wood: 12
+                              glass: 1,
+                              steel: 1,
+                              stone: 1,
+                              wood: 1
                          }, 
                          constructionTime: "03h",
                          itemPlaced: [null, null, null, 
@@ -185,18 +185,16 @@ angular.module('petGame.gymService', ['petGame.backpackService'])
           return ;
      };
 
+     // Resets the states of the gym's rooms and the user satisfaction, when it is game over
      o.resetGym = function() {
           for (room in o.gym.rooms) {
-               console.log(room);
                for (i = 0; i < o.gym.rooms[room].itemPlaced.length; i++) {
                     o.gym.rooms[room].itemPlaced[i] = null;
                }
                if (o.gym.rooms[room].unlockLevel == 1) {
                     o.gym.rooms[room].status = "forSale";
-                    console.log("here");
                } else {
                     o.gym.rooms[room].status = "locked";
-                    console.log("here2");
                }
           }
           o.gym.userSatisfaction = 0;

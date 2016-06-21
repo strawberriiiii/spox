@@ -6,12 +6,12 @@ angular.module('petGame.backpackService', [])
      var o = {
           backpack: {
                berries : {
-                    amount: 6,
+                    amount: 0,
                     pic: 'assets/img/backpack/berries.png',
                     name: 'Berries'
                }, 
                glass : {
-                    amount: 70,
+                    amount: 0,
                     pic: 'assets/img/backpack/glass.png',
                     name: 'Glass'
                },
@@ -26,12 +26,12 @@ angular.module('petGame.backpackService', [])
                     name: 'Meat'
                },
                steel : {
-                    amount: 150,
+                    amount: 0,
                     pic: 'assets/img/backpack/steel.png',
                     name: 'Steel'
                },
                stone : {
-                    amount: 100,
+                    amount: 0,
                     pic: 'assets/img/backpack/stone.png',
                     name: 'Stone'
                },
@@ -41,7 +41,7 @@ angular.module('petGame.backpackService', [])
                     name: 'Water'
                },
                wood : {
-                    amount: 12,
+                    amount: 0,
                     pic: 'assets/img/backpack/wood.png',
                     name: 'Wood'
                }
@@ -88,6 +88,7 @@ angular.module('petGame.backpackService', [])
           return false;
      };
 
+     // Resets the backpack, when it is game over
      o.resetBackpack = function() {
           for (good in o.backpack) {
                o.backpack[good].amount = 0;

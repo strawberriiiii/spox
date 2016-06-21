@@ -67,7 +67,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 	
 	// Reduces the health of the pet after setted time
 	o.reduceHealth = function() {
-		o.game.health -= 10;
+		o.game.health--;
 		
 		if (o.game.health < 60 && o.game.health > 30) {
 			$('.spriteSheet').animateSprite('play', 'normal');
@@ -93,7 +93,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
           		Friends.connectedWithFacebook = false;
           		Store.resetStore();
 				$location.path('#/');
-			}, 10);
+			}, 10000);
 		} 
 
 		var c = document.getElementById('healthGraph');
@@ -207,7 +207,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 	o.startInt = function() {
         gameInv = $interval(function() {
             o.reduceHealth();
-            }, 30000);
+            }, 5000);
     };
 
     // Stops the timer
@@ -241,6 +241,7 @@ angular.module('petGame.gameService', ['petGame.storeService'])
     	}, 5000);
     };
 
+    // Sets the link for the pet for the spritesheet depending on the user's choice
     function setSpritesheetLink(petType) {
     	if (petType.name.toLowerCase() == 'bird') {
     		o.game.petSpritesheetLink = 'assets/img/pet/bird_spritesheet.png';

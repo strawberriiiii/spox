@@ -38,7 +38,8 @@ angular.module('petGame.trackingService', [])
 			km: 0,
 			time: 0,
 			repetitions: 0,
-			text: ""
+			text: "",
+            currentTurn: 0
 		} 
 	};
 
@@ -46,6 +47,7 @@ angular.module('petGame.trackingService', [])
 	var distance = 0;
 	var coords = [];
 	var sportArray = getArrayOfSports();
+    var secondTurn = 0;
 
 	// Starts the tracking of a specific activity
     o.startTracking = function(sport, callback) {
@@ -89,11 +91,14 @@ angular.module('petGame.trackingService', [])
         if (Game.game.petType != null) {
             pet = Game.game.petType;
         }
+        
     	var string = "You've received ";
 
         if (pet != null && Friends.friend == null) {
             string += "5 " + pet.good1 + " and 4 " + pet.good2 + " ";
-        } else if (pet != null && Friends.friend != null) {
+        } else if (pet != null && Friends.friend != null && o.currentTracking.currentTurn <= 1) {
+            string += "5 " + pet.good1 + " and 4 " + pet.good2 + " ";
+        } else if (pet != null && Friends.friend != null && o.currentTracking.currentTurn > 1) {
             string += "10 " + pet.good1 + " and 8 " + pet.good2 + " ";
         } else {
             string += "nothing ";
