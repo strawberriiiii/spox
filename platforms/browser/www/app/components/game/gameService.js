@@ -67,7 +67,9 @@ angular.module('petGame.gameService', ['petGame.storeService'])
 	
 	// Reduces the health of the pet after setted time
 	o.reduceHealth = function() {
-		o.game.health--;
+		if (o.game.health > 0) {
+			o.game.health--;
+		}
 		
 		if (o.game.health < 60 && o.game.health > 30) {
 			$('.spriteSheet').animateSprite('play', 'normal');
